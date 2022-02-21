@@ -48,15 +48,22 @@ fetchTitleWithAxios();
 
 //.....................................................................................................
 
+const jokes = document.getElementById("jokes");
+const button = document.getElementById("jokes-button")
 
 const getDadJoke = async () => {
     try {
-        const config = {headers: {Accept: "application/json"}}
+        const config = { headers: { Accept: "application/json" } }
         const res = await axios.get("https://icanhazdadjoke.com/", config)
-        console.log(res.data.joke);
+        const newJoke = res.data.joke;
+        const newLi = document.createElement("li");
+        newLi.append(newJoke);
+        jokes.append(newLi);
     } catch (err) {
         console.log(err);
     }
 }
 
-getDadJoke();
+button.addEventListener("click", getDadJoke)
+//.....................................................................................................
+
