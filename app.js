@@ -33,3 +33,16 @@ axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1")
     }).catch(err => {
         console.log(err, "oops, axios error")
     })
+
+    //.................................................................................................
+
+    const fetchTitleWithAxios = async () => {
+        try {
+            const res = await axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1");
+            console.log(res.data.name);
+        } catch(err) {
+            console.log("async axios error", err);
+        }
+    }
+
+    fetchTitleWithAxios();
