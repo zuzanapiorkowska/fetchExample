@@ -25,7 +25,6 @@ fetchTitle();
 
 //.................................................................................................
 
-
 axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1")
     .then(res => {
         console.log(res, "axios parsed data")
@@ -34,15 +33,30 @@ axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1")
         console.log(err, "oops, axios error")
     })
 
-    //.................................................................................................
+//.................................................................................................
 
-    const fetchTitleWithAxios = async () => {
-        try {
-            const res = await axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1");
-            console.log(res.data.name);
-        } catch(err) {
-            console.log("async axios error", err);
-        }
+const fetchTitleWithAxios = async () => {
+    try {
+        const res = await axios.get("http://api.tvmaze.com/shows/6771/episodebynumber?season=1&number=1");
+        console.log(res.data.name);
+    } catch (err) {
+        console.log("async axios error", err);
     }
+}
 
-    fetchTitleWithAxios();
+fetchTitleWithAxios();
+
+//.....................................................................................................
+
+
+const getDadJoke = async () => {
+    try {
+        const config = {headers: {Accept: "application/json"}}
+        const res = await axios.get("https://icanhazdadjoke.com/", config)
+        console.log(res.data.joke);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+getDadJoke();
