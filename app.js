@@ -55,15 +55,19 @@ const getDadJoke = async () => {
     try {
         const config = { headers: { Accept: "application/json" } }
         const res = await axios.get("https://icanhazdadjoke.com/", config)
-        const newJoke = res.data.joke;
-        const newLi = document.createElement("li");
-        newLi.append(newJoke);
-        jokes.append(newLi);
+        return res.data.joke;
     } catch (err) {
         console.log(err);
     }
 }
 
-button.addEventListener("click", getDadJoke)
+const addNewJoke = async () => {
+        const newJoke = await getDadJoke();
+        const newLi = document.createElement("li");
+        newLi.append(newJoke);
+        jokes.append(newLi);
+}
+
+button.addEventListener("click", addNewJoke)
 //.....................................................................................................
 
